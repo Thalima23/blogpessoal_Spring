@@ -37,11 +37,13 @@ private String texto;
 @UpdateTimestamp
 private LocalDateTime data;
 
-@ManyToOne
-@JsonIgnoreProperties("postagem") //segura o looping infinito
-private Tema tema;
+@ManyToOne // indica que n postagens estão ligadas a um unico tema
+@JsonIgnoreProperties("postagem") //segura o looping infinito na hora de converter os dados em Json
+private Tema tema; // Cria a ligação entre as classes (cada postagem tem um tema)
 
-
+@ManyToOne // 
+@JsonIgnoreProperties("postagem") 
+private Usuario usuario; 
 public Long getId() {
 	return id;
 }
@@ -74,6 +76,14 @@ public Tema getTema() {
 
 public void setTema(Tema tema) {
 	this.tema = tema;
+}
+
+public Usuario getUsuario() {
+	return usuario;
+}
+
+public void setUsuario(Usuario usuario) {
+	this.usuario = usuario;
 }
 
 	
